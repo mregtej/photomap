@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mregt.photomap">
 
+    <!-- Permissions granted: -->
+    <!-- * ACCESS_COARSE_LOCATION -->
+    <!-- * ACCESS_FINE_LOCATION -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -13,20 +16,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- Google Play Services version -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
            
+        <!-- Google Android Maps API key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <!-- Main Activity: Maps + App Navigation Drawer -->
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
