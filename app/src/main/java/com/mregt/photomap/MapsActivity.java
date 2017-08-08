@@ -1,5 +1,6 @@
 package com.mregt.photomap;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -21,14 +22,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
 /**
- *
- */
-/**
- * <p>PhotoMap main screen.<br>
- * Displays Google Maps + App navigation menu.</p>
- * <p>Main functionalities:</p>
- * <p>Bugs: Not yet tested.</p>
+ * <p><h1>PhotoMap screen (Main Activity)</h1><br>
+ * <p><b>Description</b>:<br>
+ * <p><b>Main functionalities & features</b>:<br>
+ *     + Displays Google Maps.<br>
+ *     + App Navigation drawer implemented</p>
+ * <p><b>Bugs</b>:<br>
+ *     Not yet tested.</p>
  *
  * @author Modesto Rego
  */
@@ -77,7 +79,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        // Ontain DrawerLayout, inflate NavigationView and set NavigationItemSelectedListener
+        // Obtain DrawerLayout, inflate NavigationView and set NavigationItemSelectedListener
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -104,20 +106,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.drawer, menu);
+        // Inflate the ActionBar's menu
+        getMenuInflater().inflate(R.menu.app_drawer_actions, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // Handle action bar item clicks
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // Open Settings Screen
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(MapsActivity.this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -127,21 +129,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        // Handle gallery_bottom_navigation view item clicks here.
+        switch(item.getItemId()) {
+            case R.id.nav_gallery:
+                Intent intent = new Intent(MapsActivity.this, GalleryActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_camera:
+            case R.id.nav_slideshow:
+            case R.id.nav_manage:
+            case R.id.nav_share:
+            case R.id.nav_send:
+            default:
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
