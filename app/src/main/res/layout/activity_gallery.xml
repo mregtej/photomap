@@ -9,11 +9,10 @@
     tools:context="com.mregt.photomap.GalleryActivity">
 
     <FrameLayout
-        android:id="@+id/fr_gallery_content"
+        android:id="@+id/fr_gallery_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView

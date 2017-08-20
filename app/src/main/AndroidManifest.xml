@@ -3,10 +3,13 @@
     package="com.mregt.photomap">
 
     <!-- Permissions granted: -->
-    <!-- * ACCESS_COARSE_LOCATION -->
-    <!-- * ACCESS_FINE_LOCATION -->
+    <!-- * ACCESS_COARSE_LOCATION: Location on maps -->
+    <!-- * ACCESS_FINE_LOCATION:   Location on maps -->
+    <!-- * READ_EXTERNAL_STORAGE:  Access to DCIM/Camera folder on SDCard -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -46,9 +49,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MapsActivity" />
         </activity>
+
+        <!-- Detailed Image Activity -->
+        <activity android:name=".DetailedImageActivity"></activity>
+
+        <!-- Settings Activity (PhotoMap main settings screen) -->
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings">
+        </activity>
+
     </application>
 
 </manifest>

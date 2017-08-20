@@ -2,7 +2,6 @@ package com.mregt.photomap;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -29,13 +28,24 @@ public class GalleryActivity extends AppCompatActivity {
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        public boolean onNavigationItemSelected(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.gallery_tab_photos:
                     // TODO
                     return true;
                 case R.id.gallery_tab_albums:
-                    // TODO
+                    // Create Albums fragment
+                    // AlbumsFragment albumsFragment = new AlbumsFragment();
+
+                    // FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+                    // Replace whatever is in the fragment_container view with this fragment,
+                    // and add the transaction to the back stack so the user can navigate back
+                    // transaction.replace(R.id.fr_gallery_container, albumsFragment);
+                    // transaction.addToBackStack(null);
+
+                    // Commit the transaction
+                    // transaction.commit();
                     return true;
                 case R.id.gallery_tab_network:
                     // TODO
@@ -60,9 +70,26 @@ public class GalleryActivity extends AppCompatActivity {
         // Display ActionBar & setTitle
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.gallery_tab_title_gallery);
+        getSupportActionBar().setTitle(R.string.title_activity_gallery);
 
-        // TODO inflate Photos frame by default
+        // Check that the activity is using the layout version with
+        // the fragment_container FrameLayout
+        if (findViewById(R.id.fr_gallery_container) != null) {
+
+            // However, if we're being restored from a previous state,
+            // then we don't need to do anything and should return or else
+            // we could end up with overlapping fragments.
+            if (savedInstanceState != null) {
+                return;
+            }
+
+            // Create a new Fragment to be placed in the activity layout
+            ImagesFragment photosFragment = new ImagesFragment();
+
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fr_gallery_container, photosFragment).commit();
+        }
 
         Log.d(TAG, "onCreate() - finished");
     }

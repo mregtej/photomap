@@ -2,24 +2,26 @@
     <!-- App & Activity names -->
     <string name="app_name">PhotoMap</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_gallery">GalleryActivity</string>
+    <string name="title_activity_gallery">Gallery</string>
+    <string name="title_activity_settings">Settings</string>
 
     <!-- Navigation app_drawer_actions messages & menu items-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="navigation_drawer_gallery_item">Gallery</string>
 
     <!-- ActionBar actions -->
     <string name="action_settings">Settings</string>
 
     <!-- Gallery gallery_bottom_navigation tab-titles -->
-    <string name="gallery_tab_title_gallery">Gallery</string>
     <string name="gallery_tab_title_photos">Photos</string>
     <string name="gallery_tab_title_albums">Albums</string>
     <string name="gallery_tab_title_network">Network</string>
-    <string name="title_activity_settings">Settings</string>
 
-    <!-- Strings related to Settings -->
+    <!-- Settings sub-menus and descriptions -->
+
+    <!-- Detailed Image Activity -->
+    <string name="detailed_image_name">Filename:</string>
+    <string name="detailed_image_date">Date:</string>
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
