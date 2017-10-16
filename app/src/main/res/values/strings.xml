@@ -1,9 +1,9 @@
 <resources>
     <!-- App & Activity names -->
     <string name="app_name">PhotoMap</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_gallery">Gallery</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="activity_maps_title">Map</string>
+    <string name="activity_gallery_title">Gallery</string>
+    <string name="activity_settings_title">Settings</string>
 
     <!-- Navigation app_drawer_actions messages & menu items-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -20,12 +20,30 @@
     <!-- Settings sub-menus and descriptions -->
 
     <!-- Detailed Image Activity -->
-    <string name="detailed_image_name">Filename:</string>
-    <string name="detailed_image_date">Date:</string>
+    <!-- Labels -->
+    <string name="detailed_image_filename_label">File name</string>
+    <string name="detailed_image_filepath_label">File path</string>
+    <string name="detailed_image_captured_time_label">Captured time</string>
+    <string name="detailed_image_geolocation_label">Geolocation</string>
+    <string name="detailed_image_orientation_label">Orientation</string>
+    <string name="detailed_image_camera_maker_label">Camera maker</string>
+    <string name="detailed_image_camera_model_label">Camera model</string>
+    <!-- Default values -->
+    <string name="detailed_image_filename_default_value">IMG_0000</string>
+    <string name="detailed_image_filepath_default_value">/storage/emulated/0/DCIM/IMG_0000</string>
+    <string name="detailed_image_captured_time_default_value">01/01/1970 00:00:00</string>
+    <string name="detailed_image_geolocation_default_value">49°27\'03.4"N 11°04\'42.6"E, St. Lorenz,
+        Lorenzer Pl. 1, 90402 Nürnberg, Germany</string>
+    <string name="detailed_image_orientation_default_value">@string/detailed_image_vertical_orientation</string>
+    <!-- Additional values -->
+    <string name="detailed_image_vertical_orientation">Vertical</string>
+    <string name="detailed_image_horizontal_orientation">Horizontal</string>
+    <string name="unknown">Unknown</string>
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
+    <!--Others TODO TBR -->
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
     <string name="pref_description_social_recommendations">Recommendations for people to contact
         based on your message history

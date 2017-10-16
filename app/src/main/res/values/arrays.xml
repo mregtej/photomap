@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <array name="detailed_image_orientations">
+        <item name="vertical">@string/detailed_image_vertical_orientation</item>
+        <item name="horizontal">@string/detailed_image_horizontal_orientation</item>
+    </array>
+</resources>

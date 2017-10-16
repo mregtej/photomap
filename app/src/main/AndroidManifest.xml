@@ -32,10 +32,10 @@
         <!-- Main Activity: Maps + App Navigation Drawer -->
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
+            android:label="@string/activity_maps_title"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,20 +43,21 @@
         <!-- Gallery Activity (accessed from gallery_bottom_navigation app_drawer_actions) -->
         <activity
             android:name=".GalleryActivity"
-            android:label="@string/title_activity_gallery"
-            android:theme="@style/AppTheme.ActionBar">
+            android:label="@string/activity_gallery_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MapsActivity" />
         </activity>
 
         <!-- Detailed Image Activity -->
-        <activity android:name=".DetailedImageActivity"></activity>
+        <activity
+            android:name=".DetailedImageActivity">
+        </activity>
 
         <!-- Settings Activity (PhotoMap main settings screen) -->
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings">
+            android:label="@string/activity_settings_title">
         </activity>
 
     </application>

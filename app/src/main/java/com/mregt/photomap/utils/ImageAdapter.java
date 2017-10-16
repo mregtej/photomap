@@ -1,6 +1,7 @@
 package com.mregt.photomap.utils;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +27,6 @@ public class ImageAdapter extends BaseAdapter {
 
     private int mScreenHeight;
     private int mScreenWidth;
-
-    private static final int NUMBER_OF_COLUMNS = 3;
 
     // references to our images
     private Integer[] mThumbIds = {
@@ -70,6 +69,10 @@ public class ImageAdapter extends BaseAdapter {
         return null;
     }
 
+    public int getmThumbId(int pos) {
+        return (int) mThumbIds[pos];
+    }
+
     @Override
     public long getItemId(int i) {
         return 0;
@@ -78,17 +81,32 @@ public class ImageAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ImageView imageView;
+
         if (view == null) {
-            // if it's not recycled, initialize some attributes
+            // Set GridView LayoutParams (number of images in a row depending of
+            // the phone orientation: portrait / landscape
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(mScreenWidth/NUMBER_OF_COLUMNS
-                    , mScreenWidth/NUMBER_OF_COLUMNS));
+            switch(mContext.getResources().getConfiguration().orientation) {
+                case 2: // Landscape Mode
+                    imageView.setLayoutParams(new GridView.LayoutParams(
+                            mScreenWidth / PhotoMapGlobals.PHOTO_GRID_NUM_HORIZONTAL_COLUMNS,
+                            mScreenWidth / PhotoMapGlobals.PHOTO_GRID_NUM_HORIZONTAL_COLUMNS) );
+                    break;
+                case 1: // Portrait Mode
+                default:
+                    imageView.setLayoutParams(new GridView.LayoutParams(
+                            mScreenWidth / PhotoMapGlobals.PHOTO_GRID_NUM_VERTICAL_COLUMNS,
+                            mScreenWidth / PhotoMapGlobals.PHOTO_GRID_NUM_VERTICAL_COLUMNS) );
+                    break;
+            }
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(6, 6, 6, 6);
         } else {
+            // Retrieve loaded view
             imageView = (ImageView) view;
         }
 
+        // Set image resource
         if(PhotoMapGlobals.DEMO)
             imageView.setImageResource(mThumbIds[i]);
         else {

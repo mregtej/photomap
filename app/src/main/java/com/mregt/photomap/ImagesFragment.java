@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,18 +15,15 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.mregt.photomap.config.PhotoMapGlobals;
 import com.mregt.photomap.utils.ImageAdapter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -49,7 +45,9 @@ public class ImagesFragment extends Fragment implements LoaderManager.LoaderCall
 
     /***************************     Constants      ********************************/
 
+    private static final String GRID_POSITION = "grid-position";
     private static final String IMAGE_PATH = "image-path";
+    private static final String IMAGE_ID_RES = "image-id-res";
 
     /** Request code for permission.READ_EXTERNAL_STORAGE */
     private static final int REQUEST_READ_EXTERNAL_STORAGE = 100;
@@ -60,16 +58,26 @@ public class ImagesFragment extends Fragment implements LoaderManager.LoaderCall
     /** Class name - Logging tag */
     private static final String TAG = ImagesFragment.class.getName();
 
+    private ImageAdapter mImageAdapter;
+    private int mVisibleIndexImageAdapter;
 
     /******************************************************************************/
     /*                          Fragment (UI) methods                             */
     /******************************************************************************/
+
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt(GRID_POSITION, mVisibleIndexImageAdapter);
+        super.onSaveInstanceState(savedInstanceState);
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFileNames = new ArrayList<String>();
     }
+
 
     @Nullable
     @Override
@@ -79,13 +87,26 @@ public class ImagesFragment extends Fragment implements LoaderManager.LoaderCall
         mContext = container.getContext();
 
         // Load fragment layout and set ItemView OnClickListener
-        mImagesGridView = (GridView) inflater.inflate(R.layout.photos_gallery_fragment,
+        mImagesGridView = (GridView) inflater.inflate(R.layout.fragment_photos_gallery,
                 container, false);
+        switch(mContext.getResources().getConfiguration().orientation) {
+            case 2: // Landscape Mode
+                mImagesGridView.setNumColumns(PhotoMapGlobals.PHOTO_GRID_NUM_HORIZONTAL_COLUMNS);
+                break;
+            case 1: // Portrait Mode
+            default:
+                mImagesGridView.setNumColumns(PhotoMapGlobals.PHOTO_GRID_NUM_VERTICAL_COLUMNS);
+                break;
+        }
         mImagesGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Intent intent = new Intent(mContext, DetailedImageActivity.class);
-                intent.putExtra(IMAGE_PATH, mFileNames.get(position));
+                if(!PhotoMapGlobals.DEMO) {
+                    intent.putExtra(IMAGE_PATH, mFileNames.get(position));
+                } else {
+                    intent.putExtra(IMAGE_ID_RES, mImageAdapter.getmThumbId(position));
+                }
                 startActivity(intent);
             }
         });
@@ -103,10 +124,24 @@ public class ImagesFragment extends Fragment implements LoaderManager.LoaderCall
                 getLoaderManager().initLoader(IMAGES_LOADER_ID, null, this);
             }
         } else {
-            mImagesGridView.setAdapter(new ImageAdapter(mContext));
+            mImageAdapter = new ImageAdapter(mContext);
+            mImagesGridView.setAdapter(mImageAdapter);
         }
 
         return mImagesGridView;
+    }
+
+    @Override
+    public void onResume(){
+
+        mImagesGridView.setSelection(mVisibleIndexImageAdapter);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause(){
+        mVisibleIndexImageAdapter = mImagesGridView.getFirstVisiblePosition();
+        super.onPause();
     }
 
     /******************************************************************************/
@@ -121,7 +156,7 @@ public class ImagesFragment extends Fragment implements LoaderManager.LoaderCall
     private void requestReadExternalStoragePermissions() {
         if (shouldShowRequestPermissionRationale(
                 android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            // TODO Explain to the user why we need to read the contacts
+            // TODO needed additional explanations for users?
         } else {
             // Requests explicitly
             requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
@@ -146,7 +181,7 @@ public class ImagesFragment extends Fragment implements LoaderManager.LoaderCall
                     // Init images-loader
                     getLoaderManager().initLoader(IMAGES_LOADER_ID, null, this);
                 } else {
-                    /* TODO DialogBox to inform user and close app */
+                    /* TODO DialogBox to inform user and close app? */
                 }
                 return;
         }

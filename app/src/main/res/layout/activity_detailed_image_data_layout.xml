@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="0dp"
+    android:layout_marginTop="0dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_image_fiename_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/detailed_image_rect_label"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_filename_label"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimaryLight" />
+
+    <TextView
+        android:id="@+id/tv_image_filename_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_filename_default_value"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_image_filepath_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/detailed_image_rect_label"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_filepath_label"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimaryLight" />
+
+    <TextView
+        android:id="@+id/tv_image_filepath_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_filepath_default_value"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_image_captured_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/detailed_image_rect_label"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_captured_time_label"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimaryLight" />
+
+    <TextView
+        android:id="@+id/tv_image_captured_time_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_captured_time_default_value"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_image_geolocation_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/detailed_image_rect_label"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_geolocation_label"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimaryLight" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_image_geolocation_value"
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="80"
+            android:minLines="2"
+            android:maxLines="4"
+            android:fontFamily="sans-serif"
+            android:text="@string/detailed_image_geolocation_default_value"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <ImageButton
+            android:id="@+id/ib_image_edit_geolocation"
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            android:background="@android:drawable/ic_menu_edit" />
+
+        <ImageButton
+            android:id="@+id/ib_image_map_geolocation"
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            android:background="@android:drawable/ic_menu_mylocation" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_image_orientation_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/detailed_image_rect_label"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_orientation_label"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimaryLight" />
+
+    <TextView
+        android:id="@+id/tv_image_orientation_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_orientation_default_value"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_image_camera_maker_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/detailed_image_rect_label"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_camera_maker_label"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimaryLight" />
+
+    <TextView
+        android:id="@+id/tv_image_camera_maker_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/unknown"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_image_camera_model_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/detailed_image_rect_label"
+        android:fontFamily="sans-serif"
+        android:text="@string/detailed_image_camera_model_label"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimaryLight" />
+
+    <TextView
+        android:id="@+id/tv_image_camera_model_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/unknown"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <!-- transparent view - bottom-padding -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="0dp" />
+
+</LinearLayout>

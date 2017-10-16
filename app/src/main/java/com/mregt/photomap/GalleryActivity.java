@@ -70,7 +70,7 @@ public class GalleryActivity extends AppCompatActivity {
         // Display ActionBar & setTitle
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.title_activity_gallery);
+        getSupportActionBar().setTitle(R.string.activity_gallery_title);
 
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
